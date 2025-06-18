@@ -1,0 +1,17 @@
+﻿@model EmployeeDetailsDto
+@{
+    ViewData["Title"] = "Employee Details";
+    
+}
+
+<h2>Details of Employee: @Model.Name</h2>
+
+<!-- استخدام Partial View للعرض -->
+<partial name="Partials/_DeleteDetailsPartialEM" model="@Model" />
+
+<!-- زر الرجوع -->
+<a asp-action="Index" class="btn btn-secondary mt-4">Back to List</a>
+
+@section ValidateScripts {
+    <partial name="_ValidationScriptsPartial" />
+}

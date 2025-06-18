@@ -1,0 +1,20 @@
+﻿@model EmployeeDetailsDto
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h2>Are you sure you want to delete: @Model.Name?</h2>
+
+<partial name="Partials/_DeleteDetailsPartialEM" model="@Model" />
+
+<form asp-action="Delete" asp-route-EmpId="@Model.Id" method="post">
+    <input type="submit" value="Delete" class="btn btn-danger" />
+    <a asp-action="Index" class="btn btn-secondary">Back</a>
+</form>
+@section ValidateScripts
+{
+    <partial name="_ValidationScriptsPartial" />
+}
+
+
+

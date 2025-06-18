@@ -1,0 +1,91 @@
+﻿@model EmployeeDetailsDto
+ 
+<div class="row shadow bg-white p-4 mt-3 rounded-4 animated-form">
+    <div class="form-group col-6 mb-4">
+        <label asp-for="Name"></label>
+        <input asp-for="Name" class="form-control" />
+        <span asp-validation-for="Name" class="text-danger"></span>
+    </div>
+    <div class="form-group col-6 mb-4">
+        <label asp-for="Email"></label>
+        <input asp-for="Email" class="form-control" />
+        <span asp-validation-for="Email" class="text-danger"></span>
+    </div>
+    <div class="form-group col-6 mb-4">
+        <label asp-for="Address"></label>
+        <input asp-for="Address" class="form-control" />
+        <span asp-validation-for="Address" class="text-danger"></span>
+    </div>
+    <div class="form-group col-6 mb-4">
+        <label asp-for="age"></label>
+        <input asp-for="age" class="form-control" />
+        <span asp-validation-for="age" class="text-danger"></span>
+    </div>
+    <div class="form-group col-6 mb-4">
+        <label asp-for="salary"></label>
+        <input asp-for="salary" class="form-control" />
+        <span asp-validation-for="salary" class="text-danger"></span>
+    </div>
+    <div class="form-group col-6 mb-4">
+        <label asp-for="PhoneNumber"></label>
+        <input asp-for="PhoneNumber" class="form-control" />
+        <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+    </div>
+    <div class="form-group col-6 mb-4">
+        <label asp-for="Department"></label>
+        <input asp-for="Department" class="form-control" />
+        <span asp-validation-for="Department" class="text-danger"></span>
+    </div>
+    <div class="form-group col-6 mb-4">
+        <label asp-for="EmployeeType"></label>
+        <select asp-for="EmployeeType" asp-items="Html.GetEnumSelectList<EmployeeType>()" class="form-control">
+            <option value="">Choose...</option>
+        </select>
+        <span asp-validation-for="EmployeeType" class="text-danger"></span>
+    </div>
+    <div class="form-group col-6 mb-4">
+        <label asp-for="HiringDate"></label>
+        <input asp-for="HiringDate" type="date" class="form-control" />
+        <span asp-validation-for="HiringDate" class="text-danger"></span>
+    </div>
+    <div class="form-group col-6 mb-4">
+        <label asp-for="Gender"></label>
+        @foreach (Gender genderOption in Enum.GetValues(typeof(Gender)))
+        {
+            <div class="form-check">
+                <input type="radio" class="form-check-input" asp-for="Gender" value="@genderOption" />
+                <label class="form-check-label">@genderOption</label>
+            </div>
+        }
+    </div>
+    <div class="form-group col-12 mb-4">
+        <div class="form-check">
+            <input asp-for="IsActive" class="form-check-input" type="checkbox" />
+            <label asp-for="IsActive" class="form-check-label"></label>
+        </div>
+    </div>
+
+    @if (Model.created_by != null)
+    {
+        <div class="form-group col-6 mb-4">
+            <label asp-for="created_by"></label>
+            <input asp-for="created_by" class="form-control" readonly />
+        </div>
+        <div class="form-group col-6 mb-4">
+            <label asp-for="createdon"></label>
+            <input asp-for="createdon" class="form-control" readonly />
+        </div>
+        <div class="form-group col-6 mb-4">
+            <label asp-for="last_modified_by"></label>
+            <input asp-for="last_modified_by" class="form-control" readonly />
+        </div>
+        <div class="form-group col-6 mb-4">
+            <label asp-for="last_modifiedon"></label>
+            <input asp-for="last_modifiedon" class="form-control" readonly />
+        </div>
+    }
+</div>
+
+    
+
+

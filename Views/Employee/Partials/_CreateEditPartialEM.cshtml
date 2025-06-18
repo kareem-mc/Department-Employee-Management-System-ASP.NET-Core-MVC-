@@ -1,0 +1,135 @@
+﻿@model EmployeeVM
+
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+<style>
+    body {
+        background: linear-gradient(to right, #eef2f3, #8e9eab);
+    }
+
+    .card {
+        border-radius: 20px;
+        box-shadow: 0 0 20px rgba(0,0,0,0.15);
+    }
+
+    .form-label {
+        font-weight: bold;
+        color: #34495e;
+    }
+
+    .form-control, .form-select {
+        border-radius: 10px;
+        border: 1.5px solid #ced4da;
+        transition: all 0.3s ease-in-out;
+    }
+
+    .form-control:focus, .form-select:focus {
+        border-color: #0d6efd;
+        box-shadow: 0 0 5px #0d6efd77;
+    }
+
+    .form-check-label {
+        font-weight: 500;
+        color: #2c3e50;
+    }
+
+    .form-check-input:checked {
+        background-color: #0d6efd;
+        border-color: #0d6efd;
+    }
+
+    .btn-custom {
+        background-color: #0d6efd;
+        color: #fff;
+        border-radius: 10px;
+        padding: 10px 30px;
+        font-weight: bold;
+        transition: 0.3s ease-in-out;
+    }
+
+    .btn-custom:hover {
+        background-color: #0b5ed7;
+        transform: scale(1.05);
+    }
+
+    h3 {
+        color: #0d6efd;
+    }
+
+</style>
+
+
+
+<div class="row g-4">
+    <div class="col-md-6">
+        <label asp-for="Name" class="form-label"></label>
+        <input asp-for="Name" class="form-control" />
+        <span asp-validation-for="Name" class="text-danger small"></span>
+    </div>
+
+    <div class="col-md-6">
+        <label asp-for="Email" class="form-label"></label>
+        <input asp-for="Email" class="form-control" />
+        <span asp-validation-for="Email" class="text-danger small"></span>
+    </div>
+
+    <div class="col-md-6">
+        <label asp-for="Address" class="form-label"></label>
+        <input asp-for="Address" class="form-control" />
+        <span asp-validation-for="Address" class="text-danger small"></span>
+    </div>
+
+    <div class="col-md-6">
+        <label asp-for="Age" class="form-label"></label>
+        <input asp-for="Age" class="form-control" />
+        <span asp-validation-for="Age" class="text-danger small"></span>
+    </div>
+
+    <div class="col-md-6">
+        <label asp-for="Salary" class="form-label"></label>
+        <input asp-for="Salary" class="form-control" />
+        <span asp-validation-for="Salary" class="text-danger small"></span>
+    </div>
+
+    <div class="col-md-6">
+        <label asp-for="PhoneNumber" class="form-label"></label>
+        <input asp-for="PhoneNumber" class="form-control" />
+        <span asp-validation-for="PhoneNumber" class="text-danger small"></span>
+    </div>
+
+    <div class="col-md-6">
+        <label asp-for="EmployeeType" class="form-label"></label>
+        <select asp-for="EmployeeType" asp-items="Html.GetEnumSelectList<EmployeeType>()" class="form-select">
+            <option value="">Choose...</option>
+        </select>
+        <span asp-validation-for="EmployeeType" class="text-danger small"></span>
+    </div>
+
+    <div class="col-md-6">
+        <label class="form-label">Gender</label>
+        <div class="d-flex gap-3">
+            @foreach (Gender genderOption in Enum.GetValues(typeof(Gender)))
+            {
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" asp-for="Gender" value="@genderOption" />
+                    <label class="form-check-label">@genderOption</label>
+                </div>
+            }
+        </div>
+        <span asp-validation-for="Gender" class="text-danger small"></span>
+    </div>
+
+    <div class="col-md-6">
+        <label asp-for="HiringDate" class="form-label"></label>
+        <input asp-for="HiringDate" type="date" class="form-control" />
+        <span asp-validation-for="HiringDate" class="text-danger small"></span>
+    </div>
+
+    <div class="col-md-6 d-flex align-items-center">
+        <div class="form-check mt-4">
+            <input asp-for="IsActive" class="form-check-input" />
+            <label asp-for="IsActive" class="form-check-label"></label>
+        </div>
+    </div>
+</div>
